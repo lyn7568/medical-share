@@ -1,0 +1,66 @@
+@import '../../element-variables.scss';
+
+/*boder-color*/ $borderColor: #e4e7ed;
+/*mian-font*/
+/*主要文字*/ $mainFont: #303133;
+/*常规文字*/ $commonFont: #606266;
+/*次要文字*/ $secondaryFont: #909399;
+/*占位文字*/ $occupancyFont: #C0C4CC;
+
+@mixin border-1px(){
+  position:relative;
+  &:after {
+    display:block;
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    border-top:1px solid $borderColor;
+    content:' ';
+  }
+}
+@mixin border-none(){
+  &:after{
+    content:none;
+  }
+}
+/*border-about e*/
+
+/*text-about s*/
+@mixin text-ellipsis(){
+  line-height: 30px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@mixin text-ellipsis-n($n: 1,$lineH: 30px){
+  display: -webkit-box;
+  line-height: $lineH;
+  max-height: $lineH*$n;
+  white-space: normal !important;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  -webkit-line-clamp: $n;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/*text-about e*/
+
+/*justify align-items center*/
+@mixin center-items($w: 180px,$h: 120px){
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $borderColor;
+  box-sizing:border-box;
+  width: $w+2px;
+  height: $h+2px;
+  border-radius: 4px;
+  background-size:cover;
+  background-position: center center;
+  img{
+    max-width: $w;
+    max-height: 100%;
+  }
+}
