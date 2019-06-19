@@ -41,22 +41,14 @@ function offset (el) {
   };
 }
 
-import img1 from '../../assets/login_bg.jpg'
-import img2 from '../../assets/default-res.jpg'
-import img3 from '../../assets/default-user.jpg'
 export default {
-  // props: {
-  //   previewImg: {
-  //     type: Array
-  //   }
-  // },
+  props: {
+    previewImg: {
+      type: Array
+    }
+  },
   data() {
     return {
-      previewImg: [
-        img1,
-        img2,
-        img3
-      ],
       zoomVisiable: false,
       hoverVisiable: false,
       selected: true,
@@ -164,7 +156,7 @@ export default {
     cursor: move;
     user-select: none;
   }
-  .magnify .product-box .preview-box .hover-box:hover .hover-box{
+  .magnify .product-box .preview-box:hover .hover-box{
       display: block;
   }
   .magnify .product-box .preview-box img{

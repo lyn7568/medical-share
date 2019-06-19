@@ -82,6 +82,13 @@ a:hover {
   padding:20px;
   background:#fff;
 }
+.el-input-group__append{
+  background-color: $--color-primary;
+  color: #ffffff;
+  button.el-button{
+    border-radius: 0;
+  }
+}
 .content-title{
   display:flex;
   justify-content: space-between;
@@ -186,6 +193,7 @@ a:hover {
 .dep-list-item{
   position: relative;
   margin-bottom: 25px;
+  min-height: 20px;
   &::after{
     content: '';
     background: #dfdfdf;
@@ -264,6 +272,9 @@ a:hover {
           background: #ffffff;
           padding: 20px;
         }
+        .pane-res{
+          min-height: 300px;
+        }
       }
     }
   }
@@ -305,8 +316,12 @@ a:hover {
     &.list-pic-org{
       width: 108px;
       height: 108px;
-      border: none;
-      background-image: url('../assets/default-org.jpg')
+      // border: none;
+      background-image: url('../assets/default-org.jpg');
+      img{
+        max-width: 108px;
+        max-height: 108px;
+      }
     }
     &.list-pic-res{
       background-image: url('../assets/default-res.jpg')
@@ -361,6 +376,10 @@ a:hover {
       &.list-pic-org{
         width: 50px;
         height: 50px;
+        img{
+          max-width: 50px;
+          max-height: 50px;
+        }
       }
       &.list-pic-res{
         width: 50px;

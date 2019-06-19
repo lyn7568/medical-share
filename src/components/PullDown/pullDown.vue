@@ -1,38 +1,23 @@
 <template>
   <div class="loadSty">
-    <el-button :type="loadingComplete?'text':'primary'" :class="{}" :loading="isLoading" @click="up">{{loadMessage()}}</el-button>
+    <el-button v-if="!allLoaded" type="primary" @click="loadMore">点击加载更多</el-button>
+    <el-button v-if="allLoaded" type="text" disabled>没有更多了</el-button>
   </div>
 </template>
 
 <script>
   export default {
     props: {
-      isLoading: {
-        type: Boolean
-      },
-      loadingComplete: {
-        type: Boolean
+      allLoaded: {
+        type: Boolean,
+        default: false
       }
     },
     data() {
-      return {
-        loadCon: '点击加载更多'
-      };
+      return {}
     },
     methods: {
-      loadMessage() {
-        if (this.isLoading) {
-          this.loadCon = '加载中';
-        } else {
-          if (this.loadingComplete) {
-            this.loadCon = '没有更多数据了';
-          } else {
-            this.loadCon = '点击加载更多';
-          }
-        };
-        return this.loadCon;
-      },
-      up() {
+      loadMore() {
         this.$emit('upup', event.target);
       }
     }

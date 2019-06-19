@@ -4,7 +4,7 @@
       <div class="logo-wrapper" @click="toHome">医疗信息共享平台</div>
     </div>
     <div class="serach-con" v-show="showTopSearch">
-      <el-input placeholder="搜索医生、医院、医疗器械" v-model="searchText" class="input-with-select"></el-input>
+      <el-input placeholder="搜索医生、医院、医疗器械" v-model="searchText" @keyup.enter.native="search" class="input-with-select"></el-input>
     </div>
   </div>
 </template>
@@ -19,12 +19,20 @@ export default {
   },
   watch: {
     $route(to,from) {
-      this.showTopSearch = to.name === 'search' ? false : true
+      this.showTopSearch = to.path === '/search' ? false : true
     }
+  },
+  beforeCreate() {
+    this.$nextTick(function () {
+      this.showTopSearch = this.$route.path === '/search' ? false : true
+    })
   },
   methods: {
     toHome() {
       this.$router.replace({ path: '/' })
+    },
+    search() {
+      this.$router.push({ name: 'search', query: { key: this.searchText} })
     }
   }
 }

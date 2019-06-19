@@ -1,12 +1,12 @@
 <template>
-  <a class="list-item" :class="min?'list-min-item':''" href="#/hospital">
-    <div class="list-head list-pic-org">
-      <!-- <img :src="companyInfo.logo"> -->
+  <a class="list-item" :class="min?'list-min-item':''" :href="'#/hospital?id=' + itemSingle.id">
+    <div class="list-head list-pic-org" :style="itemSingle.image?'background: none':''">
+      <img v-if="itemSingle.image" :src="itemSingle.image">
     </div>
     <div class="list-info">
-      <div class="list-tit">医院名称</div>
-      <div class="list-owner">医院级别 子级别 医院类型</div>
-      <div v-if="!min" class="list-desc">地址：Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean.</div>
+      <div class="list-tit">{{itemSingle.name}}</div>
+      <div class="list-owner">{{itemSingle.level | hLevel}} {{itemSingle.subLevel | hSubLevel}} {{itemSingle.type | hType}}</div>
+      <div v-if="!min" v-show="itemSingle.addr || itemSingle.location" class="list-desc">地址：{{ itemSingle.addr | cityCur }} {{ itemSingle.location }}</div>
     </div>
   </a>
 </template>
@@ -16,6 +16,9 @@ export default {
     min: {
       type: Boolean,
       default: false
+    },
+    itemSingle: {
+      type: Object
     }
   },
   data() {

@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     search() {
-      this.$router.push({ name: 'search' })
+      this.$router.push({ name: 'search', query: { key: this.searchText} })
     }
   }
 };

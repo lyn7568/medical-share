@@ -9,13 +9,14 @@ import '@/styles/index.scss'
 
 import App from './App'
 import router from './router'
-// import store from './store'
+import store from './store'
 
 // import '@/icons' // icon
 // import '@/permission' // permission control
 
-// import request from './utils/request'
-// Vue.prototype.$http = request
+import request from './utils/request'
+Vue.prototype.$http = request
+import './utils/filter'
 
 import BackTop from '@/components/BackTop'
 import DefaultTip from '@/components/DefaultTip'
@@ -31,8 +32,10 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App),
   created () {
+    this.$store.dispatch('getDictHospital')
     router.afterEach((to, from, next) => {
       document.title = to.meta.title
       window.scrollTo(0, 0)
