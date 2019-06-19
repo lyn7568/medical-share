@@ -2,15 +2,6 @@
   <div class="el-filter-item">
     <div class="tag-label">{{options.label}}:</div>
     <div class="tag-ul">
-      <!-- <template v-if="options.city">
-        <el-tag
-          :type="(active===index)?'primary':'info'"
-          class="tag-li"
-          v-for="(item,index) in options.list"
-          :key="item.index"
-          @click="handelTag(item, index)"
-        >{{item.name}}</el-tag>
-      </template> -->
       <el-tag
         :type="(active===index)?'primary':'info'"
         class="tag-li"
